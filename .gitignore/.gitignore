@@ -1,7 +1,8 @@
 *.suo
 **/bin/
+**/CarApi/
 **/obj/
 *.userprefs
 *.csproj.user
-.vs/
-.idea/
+CarApi/.vs/
+CarApi/.idea/
