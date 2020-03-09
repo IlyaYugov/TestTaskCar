@@ -1,7 +1,9 @@
-using CarApi.Models;
-using CarApi.Services;
+using CarApi.DataBaseSettings;
+using DataAccess;
+using Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,13 +27,26 @@ namespace CarApi
             // requires using Microsoft.Extensions.Options
             services.Configure<CarstoreDatabaseSettings>(
                 Configuration.GetSection(nameof(CarstoreDatabaseSettings)));
-
-            services.AddSingleton<CarstoreDatabaseSettings>(sp =>
+            services.AddSingleton<ICarstoreDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<CarstoreDatabaseSettings>>().Value);
             
-            services.AddSingleton<CarService>();
+            services.AddSingleton<ICarRepository,CarRepository>();
+            services.AddSingleton<CarDomain>();
             
             services.AddControllers();
+            
+            // If using Kestrel:
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+
+            // If using IIS:
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+            
             
             services.AddSwaggerGen(c =>
             {
@@ -44,7 +59,6 @@ namespace CarApi
         {
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-            
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
@@ -61,8 +75,6 @@ namespace CarApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
