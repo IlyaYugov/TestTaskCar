@@ -7,7 +7,7 @@ namespace Domain
         List<CarModel> Get(int? skip, int? limit);
         CarModel Get(string id);
         CarModel Create(CarModel car);
-        void Update(string id, CarModel carIn);
+        CarModel Update(string id, CarModel carIn);
         void Remove(string id);
     }
 }

@@ -47,8 +47,12 @@ namespace DataAccess
             return car;
         }
 
-        public void Update(string id, CarModel carIn) =>
+        public CarModel Update(string id, CarModel carIn)
+        {
             _cars.ReplaceOne(car => car.Id == id, (Car)carIn);
+            return carIn;
+        }
+            
 
         public void Remove(string id) => 
             _cars.DeleteOne(car => car.Id == id);

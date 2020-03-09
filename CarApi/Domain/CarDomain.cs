@@ -17,15 +17,9 @@ namespace Domain
 
         public CarModel Create(CarModel car) => _carRepository.Create(car);
 
-        public void Update(string id, CarModel carIn)
+        public CarModel Update(string id, CarModel carIn)
         {
-            if (carIn.Name == null && carIn.Description == null)
-            {
-                _carRepository.Remove(id);
-                return;
-            }
-            
-            _carRepository.Update(id, carIn);
+            return _carRepository.Update(id, carIn);
         }
 
         public void Remove(CarModel carIn) => Remove(carIn.Id);

@@ -34,20 +34,7 @@ namespace CarApi
             services.AddSingleton<CarDomain>();
             
             services.AddControllers();
-            
-            // If using Kestrel:
-            services.Configure<KestrelServerOptions>(options =>
-            {
-                options.AllowSynchronousIO = true;
-            });
 
-            // If using IIS:
-            services.Configure<IISServerOptions>(options =>
-            {
-                options.AllowSynchronousIO = true;
-            });
-            
-            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = nameof(CarApi), Version = "v1" });

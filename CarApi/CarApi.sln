@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{E25CB2D7-1572-4BE2-9140-4CAE7F105F7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{8DE55B2C-1AAD-4811-B86F-893B44639B0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,8 @@ Global
 		{E25CB2D7-1572-4BE2-9140-4CAE7F105F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E25CB2D7-1572-4BE2-9140-4CAE7F105F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E25CB2D7-1572-4BE2-9140-4CAE7F105F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE55B2C-1AAD-4811-B86F-893B44639B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE55B2C-1AAD-4811-B86F-893B44639B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE55B2C-1AAD-4811-B86F-893B44639B0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
